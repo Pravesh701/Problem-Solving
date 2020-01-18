@@ -1,3 +1,5 @@
+import java.util.Scanner;
+
 class Node {
 	private int data;
 	private Node next;
@@ -56,8 +58,8 @@ class LinkedList {
 			System.out.println(" List is Empty ");
 		} else {
 			t = start;
-			while (t.getNext() != null) {
-				System.out.println(" " + t.getData());
+			for (int i = 1; i <= size; i++) {
+				System.out.print(" " + t.getData());
 				t = t.getNext();
 			}
 		}
@@ -67,7 +69,7 @@ class LinkedList {
 		Node n = new Node();
 		n.setNext(start);
 		n.setData(data);
-		// start = n;
+		start = n;
 		size++;
 	}
 
@@ -154,6 +156,60 @@ class LinkedList {
 
 public class LinkedListInJava {
 	public static void main(String[] args) {
+		Scanner scanner = new Scanner(System.in);
+		LinkedList list = new LinkedList();
+		boolean flag = true;
+		while (flag) {
+			System.out.println("/***** Choose Menu Item *****/");
+			System.out.println("1. Add Item to the list at Start");
+			System.out.println("2. Add Item to the list at End");
+			System.out.println("3. Add Item to the list at Position");
+			System.out.println("4. Delete First Item from List");
+			System.out.println("5. Delete Last Item of List");
+			System.out.println("6. Delete Item in a List At Position");
+			System.out.println("7. View List");
+			System.out.println("8. Exit");
+			System.out.println("Enter Your Choice \n");
+			int choice = scanner.nextInt();
+			int pos, data;
+			switch (choice) {
+			case 1:
+				System.out.println("Enter Interted Data ");
+				data = scanner.nextInt();
+				list.insertAtBeggining(data);
+				break;
+			case 2:
+				System.out.println("Enter Interted Data ");
+				data = scanner.nextInt();
+				list.insertAtEnd(data);
+				break;
+			case 3:
+				System.out.println("Enter Interted Data ");
+				data = scanner.nextInt();
+				System.out.println("Enter Position ");
+				pos = scanner.nextInt();
+				list.insertAtPosition(data, pos);
+				break;
+			case 4:
+				list.deleteAtFirst();
+				break;
+			case 5:
+				list.deleteAtEnd();
+				break;
+			case 6:
+				System.out.println("Enter position ");
+				pos = scanner.nextInt();
+				list.deleteAtPosition(pos);
+				break;
+			case 7:
+				list.viewList();
+				break;
+			case 8:
+				flag = false;
+			default:
+				System.out.println("Invalid Choice \n");
 
+			}
+		}
 	}
 }
